@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "19341682567",
+    "project_id": "dynamictechnosoft-e3a66",
+    "storage_bucket": "dynamictechnosoft-e3a66.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:19341682567:android:87e0e58918ca4196001522",
+        "android_client_info": {
+          "package_name": "com.example.dynamictechnosoft"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD4JkRHJrHHPYghVeX8uOW8AQr3WvU5nwM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

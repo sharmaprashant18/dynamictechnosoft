@@ -1,0 +1,3 @@
+// class SwitchColorModel {
+//   bool isLoading;
+// }
