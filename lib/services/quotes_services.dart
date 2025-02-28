@@ -3,13 +3,13 @@ import 'package:dynamictechnosoft/model/quotes_model.dart';
 
 class QuotesServices {
   final Dio dio = Dio();
-  Future<List<QuoteModel>> getQuotes() async {
+  Future<List<Quotes>> getQuotes() async {
     try {
-      final response = await dio.get('https://type.fit/api/quotes');
+      final response = await dio.get('https://dummyjson.com/quotes');
       if (response.statusCode == 200) {
         final datas = response.data;
         final quotesData =
-            (datas as List).map((e) => QuoteModel.formJson(e)).toList();
+            (datas['quotes'] as List).map((e) => Quotes.fromJson(e)).toList();
         return quotesData;
       } else {
         throw Exception('Unable to fetch quotes');

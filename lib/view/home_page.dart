@@ -11,6 +11,7 @@ import 'package:dynamictechnosoft/view/form_page.dart';
 import 'package:dynamictechnosoft/view/heropage.dart';
 import 'package:dynamictechnosoft/view/location_view.dart';
 import 'package:dynamictechnosoft/view/movie_view.dart';
+import 'package:dynamictechnosoft/view/quotes.dart';
 import 'package:dynamictechnosoft/view/shared_preferences.dart';
 import 'package:dynamictechnosoft/view/single_ton_view.dart';
 import 'package:flutter/material.dart';
@@ -99,8 +100,8 @@ class HomePage extends ConsumerWidget {
               header(context, 7, 'Movie'),
               header(context, 8, 'Animated Text'),
               header(context, 9, 'SingleTon'),
-               header(context, 10, 'Form'),
-
+              header(context, 10, 'Form'),
+              header(context, 11, 'Quote'),
               Row(
                 children: [
                   Text(
@@ -196,17 +197,26 @@ class HomePage extends ConsumerWidget {
 
                 break;
             }
-             switch (id) {
+            switch (id) {
               case 9:
-                Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => SingletonPattern()));
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => SingletonPattern()));
 
                 break;
             }
-                 switch (id) {
+            switch (id) {
               case 10:
                 Navigator.push(context,
                     MaterialPageRoute(builder: (context) => FormPage()));
+
+                break;
+            }
+            switch (id) {
+              case 11:
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => QuotesScreen()));
 
                 break;
             }

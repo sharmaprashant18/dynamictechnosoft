@@ -1,29 +1,7 @@
-class QuoteModel {
-  List<Quotes> quotes;
-  QuoteModel({required this.quotes});
-
-//Factory constructor
-  factory QuoteModel.formJson(Map<String, dynamic> json) {
-    return QuoteModel(
-      quotes: json['quotes'].map<Quotes>((e) => Quotes.fromJson(e)).toList(),
-    );
-  }
-  Map<String, dynamic> toJson() {
-    return {
-      'quotes': quotes.map((e) => e.toJson()).toList(),
-    };
-  }
-
-//copyWith method
-  QuoteModel copyWith({List<Quotes>? quotes}) {
-    return QuoteModel(quotes: quotes ?? this.quotes);
-  }
-}
-
 class Quotes {
-  int id;
-  String quote;
-  String author;
+  final int id;
+  final String quote;
+  final String author;
   Quotes({required this.id, required this.quote, required this.author});
 
 //factory constructor
