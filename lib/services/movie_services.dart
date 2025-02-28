@@ -8,7 +8,7 @@ class MovieServices {
   final Box<Movie> movieBox = Hive.box<Movie>('Movie'); // Open Hive Box
   Future<List<Movie>> getMovieByCategory(String apiPath) async {
     try {
-       if (movieBox.isNotEmpty) {
+      if (movieBox.isNotEmpty) {
         return movieBox.values.toList();
       }
       final response = await dio.get('${ApiConstants.baseUrl}$apiPath',
@@ -17,7 +17,7 @@ class MovieServices {
         final datas = response.data;
         final movieData =
             (datas['results'] as List).map((e) => Movie.fromJson(e)).toList();
-               await movieBox.clear(); // Clear old data
+        await movieBox.clear(); // Clear old data
         await movieBox.addAll(movieData);
         return movieData;
       } else {
@@ -40,5 +40,3 @@ class MovieServices {
     return getMovieByCategory(ApiConstants.popular);
   }
 }
-
-

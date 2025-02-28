@@ -1,42 +1,21 @@
 import 'package:dio/dio.dart';
-import 'package:dynamictechnosoft/api.dart';
-import 'package:dynamictechnosoft/model/movie_model.dart';
-import 'package:hive/hive.dart';
+import 'package:dynamictechnosoft/model/quotes_model.dart';
 
-class MovieServices {
+class QuotesServices {
   final Dio dio = Dio();
-  final Box<Movie> movieBox = Hive.box<Movie>('Movie'); // Open Hive Box
-  Future<List<Movie>> getMovieByCategory(String apiPath) async {
+  Future<List<QuoteModel>> getQuotes() async {
     try {
-      if (movieBox.isNotEmpty) {
-        return movieBox.values.toList();
-      }
-      final response = await dio.get('${ApiConstants.baseUrl}$apiPath',
-          queryParameters: {'api_key': 'f370a118f8c9551e6f47b9193d032054'});
+      final response = await dio.get('https://type.fit/api/quotes');
       if (response.statusCode == 200) {
         final datas = response.data;
-        final movieData =
-            (datas['results'] as List).map((e) => Movie.fromJson(e)).toList();
-        await movieBox.clear(); // Clear old data
-        await movieBox.addAll(movieData);
-        return movieData;
+        final quotesData =
+            (datas as List).map((e) => QuoteModel.formJson(e)).toList();
+        return quotesData;
       } else {
-        throw Exception('Unable to fetch movie');
+        throw Exception('Unable to fetch quotes');
       }
     } catch (e) {
       throw Exception('Error:$e');
     }
-  }
-
-  Future<List<Movie>> getNowPlaying() async {
-    return getMovieByCategory(ApiConstants.nowPlaying);
-  }
-
-  Future<List<Movie>> getTopRated() async {
-    return getMovieByCategory(ApiConstants.topRated);
-  }
-
-  Future<List<Movie>> getPopular() async {
-    return getMovieByCategory(ApiConstants.popular);
   }
 }
