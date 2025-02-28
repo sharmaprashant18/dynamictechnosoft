@@ -1,6 +1,8 @@
+import 'package:animate_do/animate_do.dart';
 import 'package:dynamictechnosoft/model/quotes_model.dart';
 import 'package:dynamictechnosoft/services/quotes_services.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_animate/flutter_animate.dart';
 
 class QuotesScreen extends StatefulWidget {
   const QuotesScreen({super.key});
@@ -37,8 +39,21 @@ class _QuotesScreenState extends State<QuotesScreen> {
       appBar: AppBar(
         title: Text(
           'Quotes',
-          style: TextStyle(fontWeight: FontWeight.bold),
-        ),
+          style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold),
+        ).animate(autoPlay: true).shimmer(
+            delay: Duration(milliseconds: 500),
+            angle: 200,
+            curve: Curves.bounceOut,
+            duration: Duration(seconds: 10),
+            colors: [
+              Colors.red,
+              Colors.blue,
+              Colors.green,
+              Colors.yellow,
+              Colors.purple,
+              Colors.cyan,
+              Colors.white,
+            ]).bounce(),
         centerTitle: true,
         backgroundColor: Colors.blueGrey.shade100,
         actions: [
@@ -78,11 +93,11 @@ class _QuotesScreenState extends State<QuotesScreen> {
                           end: Alignment.topLeft,
                           begin: Alignment.bottomRight,
                           colors: [
-                            Colors.red.shade200,
                             Colors.amber.shade50,
                             Colors.green.shade100,
                             Colors.blue.shade100,
-                            Colors.purple.shade100
+                            Colors.green.shade100,
+                            Colors.white
                           ],
                         ),
                       ),
@@ -97,6 +112,29 @@ class _QuotesScreenState extends State<QuotesScreen> {
                               size: 25,
                             ),
                             SizedBox(height: 6),
+                            Row(
+                              children: [
+                                Align(
+                                  alignment: Alignment.center,
+                                  child: Text(
+                                    ' ${quotes[index].id.toString()}' + ').',
+                                    style: TextStyle(
+                                      fontSize: 18,
+                                      fontStyle: FontStyle.italic,
+                                      color: Colors.black,
+                                    ),
+                                  ),
+                                ),
+                                Text(
+                                  'Quote: ',
+                                  style: TextStyle(
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.bold,
+                                    color: Colors.black87,
+                                  ),
+                                ),
+                              ],
+                            ),
                             Text(
                               quotes[index].quote,
                               style: TextStyle(
@@ -108,20 +146,9 @@ class _QuotesScreenState extends State<QuotesScreen> {
                             ),
                             SizedBox(height: 10),
                             Align(
-                              alignment: Alignment.bottomLeft,
+                              alignment: Alignment.bottomRight,
                               child: Text(
                                 '- ${quotes[index].author}',
-                                style: TextStyle(
-                                  fontSize: 16.0,
-                                  fontStyle: FontStyle.italic,
-                                  color: Colors.black54,
-                                ),
-                              ),
-                            ),
-                            Align(
-                              alignment: Alignment.center,
-                              child: Text(
-                                quotes[index].id.toString(),
                                 style: TextStyle(
                                   fontSize: 16.0,
                                   fontStyle: FontStyle.italic,

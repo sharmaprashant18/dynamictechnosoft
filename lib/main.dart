@@ -3,6 +3,7 @@ import 'package:dynamictechnosoft/services/hive_service.dart';
 import 'package:dynamictechnosoft/view/child_page_for%20lock%20screen.dart';
 import 'package:dynamictechnosoft/view/custom_paint.dart';
 import 'package:dynamictechnosoft/view/liner_progress_indicator.dart';
+import 'package:dynamictechnosoft/view/quotes.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_foreground_task/flutter_foreground_task.dart';
@@ -35,16 +36,17 @@ class Home extends ConsumerWidget {
     return MaterialApp(
 // debugShowCheckedModeBanner: kDebugMode? true:false,
       debugShowCheckedModeBanner: false,
-      home: 2 == 3
-          ? LinerProgressPage(
-              title: 'Loading.....',
-              backgroundColors: isDarMode ? Colors.black : Colors.pink,
-              foregroundColors: isDarMode ? Colors.pink : Colors.green,
-              showLinear: true,
-            )
-          : CustomPaintPage(
-              child: PermissionScreen(),
-            ),
+      // home: 2 == 3
+      //     ? LinerProgressPage(
+      //         title: 'Loading.....',
+      //         backgroundColors: isDarMode ? Colors.black : Colors.pink,
+      //         foregroundColors: isDarMode ? Colors.pink : Colors.green,
+      //         showLinear: true,
+      //       )
+      //     : CustomPaintPage(
+      //         child: PermissionScreen(),
+      //       ),
+      home: QuotesScreen(),
 
       theme: ThemeData(
         fontFamily: "Montserrat",
@@ -54,5 +56,3 @@ class Home extends ConsumerWidget {
     );
   }
 }
-
-
