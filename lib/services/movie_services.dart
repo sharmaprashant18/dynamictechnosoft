@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:dynamictechnosoft/api.dart';
+import 'package:dynamictechnosoft/constants/api.dart';
 import 'package:dynamictechnosoft/model/movie_model.dart';
 import 'package:hive/hive.dart';
 

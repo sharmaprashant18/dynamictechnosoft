@@ -1,6 +1,6 @@
 import 'dart:io';
 
-import 'package:dynamictechnosoft/api.dart';
+import 'package:dynamictechnosoft/constants/api.dart';
 import 'package:dynamictechnosoft/model/movie_model.dart';
 import 'package:dynamictechnosoft/services/foreground_service_configuration.dart';
 import 'package:dynamictechnosoft/services/movie_services.dart';
@@ -164,17 +164,17 @@ class _MovieScreenState extends State<MovieScreen> {
                       highlightColor: Colors.red))
               : TabBarView(children: [
                   MovieGridView(movies: movieCategories['Now Playing'] ?? []),
-              //         .animate()
-              //         .shimmer(colors: [
-              // Colors.transparent,
-              //       Colors.red,
-              //       Colors.blue,
-              //       Colors.green,
-              //       Colors.yellow,
-              //       Colors.purple,
-              //       Colors.cyan
-                    
-              //     ]),
+                  //         .animate()
+                  //         .shimmer(colors: [
+                  // Colors.transparent,
+                  //       Colors.red,
+                  //       Colors.blue,
+                  //       Colors.green,
+                  //       Colors.yellow,
+                  //       Colors.purple,
+                  //       Colors.cyan
+
+                  //     ]),
                   MovieGridView(movies: movieCategories['Popular'] ?? []),
                   //     .animate(
                   //       autoPlay: true
@@ -225,7 +225,6 @@ class MovieGridView extends StatelessWidget {
         final movie = movies[index];
         // return MovieCard(movie: movie);
         return Card(
-          
           surfaceTintColor: Colors.red,
           shadowColor: Colors.amber,
           elevation: 4,
