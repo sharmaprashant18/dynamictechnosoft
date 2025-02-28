@@ -28,10 +28,7 @@ class _QuotesScreenState extends State<QuotesScreen> {
         isLoading = false;
       });
     } catch (e) {
-      setState(() {
-        error = e.toString();
-        isLoading = false;
-      });
+      this.error = e.toString();
     }
   }
 
@@ -66,64 +63,74 @@ class _QuotesScreenState extends State<QuotesScreen> {
           : ListView.builder(
               itemCount: quotes.length,
               itemBuilder: (context, index) {
-                return Card(
-                  margin: EdgeInsets.only(bottom: 20.0),
-                  elevation: 4.0,
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(15.0),
-                  ),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(15.0),
-                      gradient: LinearGradient(
-                        begin: Alignment.topLeft,
-                        end: Alignment.bottomRight,
-                        colors: [
-                          Colors.red.shade200,
-                          Colors.amber.shade50,
-                          Colors.green.shade100,
-                          Colors.blue.shade100,
-                          Colors.purple.shade100
-                        ],
-                      ),
+                return Padding(
+                  padding: const EdgeInsets.all(8),
+                  child: Card(
+                    margin: EdgeInsets.only(bottom: 10),
+                    elevation: 10,
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(60),
                     ),
-                    child: Padding(
-                      padding: EdgeInsets.all(20.0),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          // Quote mark icon
-                          Icon(
-                            Icons.format_quote,
-                            color: Colors.cyan,
-                            size: 32.0,
-                          ),
-                          SizedBox(height: 16.0),
-                          // Quote text
-                          Text(
-                            quotes[index].quote,
-                            style: TextStyle(
-                              fontSize: 18.0,
-                              fontWeight: FontWeight.w500,
-                              color: Colors.black87,
-                              letterSpacing: 0.5,
-                              height: 1.4,
+                    child: Container(
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        gradient: LinearGradient(
+                          end: Alignment.topLeft,
+                          begin: Alignment.bottomRight,
+                          colors: [
+                            Colors.red.shade200,
+                            Colors.amber.shade50,
+                            Colors.green.shade100,
+                            Colors.blue.shade100,
+                            Colors.purple.shade100
+                          ],
+                        ),
+                      ),
+                      child: Padding(
+                        padding: EdgeInsets.all(5),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Icon(
+                              Icons.format_quote,
+                              color: Colors.cyan,
+                              size: 25,
                             ),
-                          ),
-                          SizedBox(height: 16.0),
-                          // Author
-                          Align(
-                            alignment: Alignment.bottomRight,
-                            child: Text(
-                              '- ${quotes[index].author}',
+                            SizedBox(height: 6),
+                            Text(
+                              quotes[index].quote,
                               style: TextStyle(
-                                fontSize: 16.0,
-                                fontStyle: FontStyle.italic,
-                                color: Colors.black54,
+                                fontSize: 15,
+                                fontWeight: FontWeight.w500,
+                                color: Colors.black87,
+                                height: 1.4,
                               ),
                             ),
-                          ),
-                        ],
+                            SizedBox(height: 10),
+                            Align(
+                              alignment: Alignment.bottomLeft,
+                              child: Text(
+                                '- ${quotes[index].author}',
+                                style: TextStyle(
+                                  fontSize: 16.0,
+                                  fontStyle: FontStyle.italic,
+                                  color: Colors.black54,
+                                ),
+                              ),
+                            ),
+                            Align(
+                              alignment: Alignment.center,
+                              child: Text(
+                                quotes[index].id.toString(),
+                                style: TextStyle(
+                                  fontSize: 16.0,
+                                  fontStyle: FontStyle.italic,
+                                  color: Colors.black54,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                     ),
                   ),
